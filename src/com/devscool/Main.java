@@ -40,34 +40,34 @@ public class Main {
         List<Pessoa> listaPessoas = new ArrayList<>();
         Scanner ler = new Scanner(System.in);
 
-        String funcionalidades;
+        String funcionalidadeEscolhida;
 
         exibeListaFuncionalidades();
         while (true) {
-            funcionalidades = ler.nextLine();
+            funcionalidadeEscolhida = ler.nextLine();
 
-            if (funcionalidades.equals("adicionar pessoa")) {
-                loopdefora:
+            if (funcionalidadeEscolhida.equals("adicionar pessoa")) {
+                loopfuncionalidades:
                 while (true) {
-                    String nome;
+                    String nomeEscolhido;
 
-                    System.out.printf("\nQual o nome da pessoa que deseja adicionar?\n");
-                    nome = ler.nextLine();
-                    if (!nome.isEmpty()) {
+                    System.out.printf("\nQual o nome da pessoa que você deseja adicionar?\n");
+                    nomeEscolhido = ler.nextLine();
+                    if (!nomeEscolhido.isEmpty()) {
                         while (true) {
-                            int idade;
+                            int idadeEscolhida;
 
-                            System.out.printf("\nE qual a idade?\n");
-                            idade = ler.nextInt();
-                            if (idade >= 0 && idade <= 120) {
+                            System.out.printf("\nE qual a idade da pessoa?\n");
+                            idadeEscolhida = ler.nextInt();
+                            if (idadeEscolhida >= 0 && idadeEscolhida <= 120) {
                                 try {
-                                    adicionaPessoa(listaPessoas, nome, idade);
+                                    adicionaPessoa(listaPessoas, nomeEscolhido, idadeEscolhida);
                                     exibeListaFuncionalidades();
-                                    break loopdefora;
+                                    break loopfuncionalidades;
                                 } catch (Exception e) {
-                                    System.out.printf("\nErro: Não foi possivel adicionar esta pessoa! Por favor, tente novamente." +
+                                    System.out.printf("\nErro: Não foi possível adicionar esta pessoa! Por favor, tente novamente." +
                                             "%n log de erro: " + e);
-                                    break loopdefora;
+                                    break loopfuncionalidades;
                                 }
                             } else {
                                 System.out.print("\nErro: A idade informada é inválida! Por favor, informe uma idade válida (entre 0 e 120 anos).\n");
@@ -77,13 +77,13 @@ public class Main {
                         System.out.print("\nErro: O nome informado não pode ser vazio! Por favor, insira um nome válido.\n");
                     }
                 }
-            } else if (funcionalidades.equals("ordenar nomes")) {
+            } else if (funcionalidadeEscolhida.equals("ordenar nomes")) {
                 ordenaPessoaNome(listaPessoas);
                 exibeListaFuncionalidades();
-            } else if (funcionalidades.equals("ordenar idades")) {
+            } else if (funcionalidadeEscolhida.equals("ordenar idades")) {
                 ordenaPessoaIdade(listaPessoas);
                 exibeListaFuncionalidades();
-            } else if (funcionalidades.isEmpty()) {
+            } else if (funcionalidadeEscolhida.isEmpty()) {
                 continue;
             }
             else {
